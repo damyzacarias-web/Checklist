@@ -148,28 +148,5 @@ const datos = [
     ["Módulo 2","Pendiente"]
 ];
 
-document.getElementById("btnReporte").addEventListener("click", () => {
 
-    const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF();
-
-    // Obtener todas las tareas
-    const checks = document.querySelectorAll("#listaTareas input[type='checkbox'], .item-check");
-
-    const total = checks.length;
-    const realizadas = document.querySelectorAll("#listaTareas input[type='checkbox']:checked, .item-check:checked").length;
-    const pendientes = total - realizadas;
-    const porcentaje = total > 0 ? Math.round((realizadas / total) * 100) : 0;
-
-    pdf.setFontSize(18);
-    pdf.text("Reporte de tareas", 20, 20);
-
-    pdf.setFontSize(12);
-    pdf.text("Total: " + total, 20, 40);
-    pdf.text("Realizadas: " + realizadas, 20, 50);
-    pdf.text("Pendientes: " + pendientes, 20, 60);
-    pdf.text("Avance: " + porcentaje + "%", 20, 70);
-
-    pdf.save("reporte.pdf");
-});
 
